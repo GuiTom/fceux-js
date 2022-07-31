@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>FCEUX by ryanwmoore</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <link rel="stylesheet" href="stylesheets/emscripten.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/ryanwmoore/fceux">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/ryanwmoore/fceux/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/ryanwmoore/fceux/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>FCEUX</h1>
+          <p></p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/ryanwmoore">ryanwmoore</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>
+<a id="fceux" class="anchor" href="#fceux" aria-hidden="true"><span class="octicon octicon-link"></span></a>FCEUX</h1>
+
+<p>This is my personal branch of FCEUX, an NES/Famicom emulator. FCEUX is released
+under the GPL license and is available from <a href="http://www.fceux.com/">http://www.fceux.com/</a> and/or
+<a href="http://sourceforge.net/projects/fceultra/">http://sourceforge.net/projects/fceultra/</a></p>
+
+<p>I have a few goals with this branch:</p>
+
+<ol>
+<li>Better code quality</li>
+<li>Emscripten support</li>
+<li>Additional scripting features</li>
+<li>Performance</li>
+</ol>
+
+<h2>
+<a id="emscripten-demo" class="anchor" href="#emscripten-demo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Emscripten Demo</h2>
+
+    <p>This demo is a work-in-progress and does not work yet. The demo will
+    require a new(ish) browser. It has been tested in Firefox 34.</p>
+
+    <ol>
+      <li>Set your command-line arguments (optional)</li>
+      <li>Select a ROM on your computer</li>
+      <li>Play! A:F, B:D, Select:S, Start:Enter</li>
+    </ol>
+
+    <div class="launch-controls">
+      <div>
+        <label for="command-line">Command line arguments used to launch FCEUX:</label>
+        <input type="text" name="command-line" id="command-line" value="--no-config 1 user-uploaded-rom" />
+      </div>
+
+      <div>
+        <label for="rom">
+            Select a ROM (.nes or .zip) from your computer
+        </label>
+        <input type="file" id="rom" name="rom" title="ROM to play">
+      </div>
+    </div>
+
+    <div class="spinner" id='spinner'></div>
+    <div class="emscripten" id="status">Downloading...</div>
+
+    <span id='controls'>
+      <span><input type="checkbox" id="resize">Resize canvas</span>
+      <span><input type="checkbox" id="pointerLock" checked>Lock/hide mouse pointer &nbsp;&nbsp;&nbsp;</span>
+      <span><input type="button" value="Fullscreen" onclick="Module.requestFullScreen(document.getElementById('pointerLock').checked, 
+                                                                                document.getElementById('resize').checked)">
+      </span>
+    </span>
+
+    <div class="emscripten">
+      <progress value="0" max="100" id="progress" hidden=1></progress>
+    </div>
+
+
+    <div class="emscripten_border">
+      <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()"></canvas>
+    </div>
+    <textarea id="output" rows="8"></textarea>
+
+    <script type="text/javascript" src="javascripts/fceux-setup.js"></script>
+    <script type="text/javascript" src="javascripts/fceux.js"></script>
+
+
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
